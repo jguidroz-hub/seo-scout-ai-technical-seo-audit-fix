@@ -17,7 +17,7 @@ export default function AuditsDetailPage() {
   const [newTitle, setNewTitle] = useState('');
 
   useEffect(() => {
-    fetch('/api/audits/[id]')
+    fetch('/api/auditLog/[id]')
       .then(r => r.json())
       .then(data => { setItems(data.items || []); setLoading(false); })
       .catch(() => setLoading(false));
@@ -25,7 +25,7 @@ export default function AuditsDetailPage() {
 
   const handleCreate = async () => {
     if (!newTitle.trim()) return;
-    const res = await fetch('/api/audits/[id]', {
+    const res = await fetch('/api/auditLog/[id]', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title: newTitle }),

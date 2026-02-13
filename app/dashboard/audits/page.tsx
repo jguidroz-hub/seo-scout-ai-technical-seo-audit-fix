@@ -17,7 +17,7 @@ export default function AuditsPage() {
   const [newTitle, setNewTitle] = useState('');
 
   useEffect(() => {
-    fetch('/api/audits')
+    fetch('/api/auditLog')
       .then(r => r.json())
       .then(data => { setItems(data.items || []); setLoading(false); })
       .catch(() => setLoading(false));
@@ -25,7 +25,7 @@ export default function AuditsPage() {
 
   const handleCreate = async () => {
     if (!newTitle.trim()) return;
-    const res = await fetch('/api/audits', {
+    const res = await fetch('/api/auditLog', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title: newTitle }),
@@ -39,7 +39,7 @@ export default function AuditsPage() {
   };
 
   const handleDelete = async (id: string) => {
-    await fetch(`/api/audits/${id}`, { method: 'DELETE' });
+    await fetch(`/api/auditLog/${id}`, { method: 'DELETE' });
     setItems(prev => prev.filter(i => i.id !== id));
   };
 
@@ -61,7 +61,7 @@ export default function AuditsPage() {
         </button>
       </div>
 
-      <p className="text-gray-600 mb-6">Overview of website SEO audits</p>
+      <p className="text-gray-600 mb-6">Overview of website SEO auditLog</p>
 
       {showCreate && (
         <div className="mb-6 p-4 border rounded-lg bg-gray-50">

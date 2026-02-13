@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { db } from '@/lib/db';
-import { auditsFixes } from '@/lib/domain-schema';
+import { auditLog } from '@/lib/domain-schema';
 import { eq, and } from 'drizzle-orm';
 
 export const runtime = 'nodejs';

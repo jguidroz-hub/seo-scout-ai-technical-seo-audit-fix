@@ -28,11 +28,11 @@ export default function DashboardPage() {
 
       <h2 className="text-lg font-semibold mb-4">Quick Access</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
-          <a href="/dashboard/audits" className="block p-4 border rounded-lg hover:bg-blue-50 transition">
+          <a href="/dashboard/auditLog" className="block p-4 border rounded-lg hover:bg-blue-50 transition">
             <h3 className="font-medium">SEO Audit Dashboard</h3>
-            <p className="text-sm text-gray-500">Overview of website SEO audits</p>
+            <p className="text-sm text-gray-500">Overview of website SEO auditLog</p>
           </a>
-          <a href="/dashboard/audits/[id]" className="block p-4 border rounded-lg hover:bg-blue-50 transition">
+          <a href="/dashboard/auditLog/[id]" className="block p-4 border rounded-lg hover:bg-blue-50 transition">
             <h3 className="font-medium">Audit Details</h3>
             <p className="text-sm text-gray-500">Detailed SEO audit report and fixes</p>
           </a>
