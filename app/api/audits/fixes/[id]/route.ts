@@ -25,7 +25,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   const { id } = await params;
   const body = await req.json();
 
-  const [updated] = await db.update(audits)
+  const [updated] = await db.update(websiteAudits)
     .set({ ...body, updatedAt: new Date() })
     .where(and(eq(websiteAudits.id, id), eq(websiteAudits.userId, session.user.id)))
     .returning();
@@ -39,7 +39,7 @@ export async function DELETE(_req: Request, { params }: { params: Promise<{ id: 
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const { id } = await params;
 
-  await db.delete(audits)
+  await db.delete(websiteAudits)
     .where(and(eq(websiteAudits.id, id), eq(websiteAudits.userId, session.user.id)));
 
   return NextResponse.json({ success: true });
