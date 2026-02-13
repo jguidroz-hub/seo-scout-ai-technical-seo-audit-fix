@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'SEO Scout - AI Technical SEO Audit & Fix',
-  description: 'Value Proposition: Helps SEO professionals and digital marketers efficiently identify, prioritize, and suggest actionable fixes for technical SEO issues across websites, saving significant time and improving search engine rankings.',
+  description: 'Value Proposition: Helps SEO professionals and digital marketers efficiently identify, prioritize, a',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
