@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { db } from '@/lib/db';
-import { auditLog } from '@/lib/domain-schema';
+import { websiteAudits } from '@/lib/domain-schema';
 import { eq, and } from 'drizzle-orm';
 
 export const runtime = 'nodejs';
@@ -11,8 +11,8 @@ export async function GET(_req: Request, { params }: { params: Promise<{ id: str
   if (!session?.user?.id) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const { id } = await params;
 
-  const [item] = await db.select().from(audits)
-    .where(and(eq(audits.id, id), eq(aauditsuserId, session.user.id)))
+  const [item] = await db.select().from(websiteAudits)
+    .where(and(eq(websiteAudits.id, id), eq(websiteAudits.userId, session.user.id)))
     .limit(1);
 
   if (!item) return NextResponse.json({ error: 'Not found' }, { status: 404 });
@@ -27,7 +27,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
 
   const [updated] = await db.update(audits)
     .set({ ...body, updatedAt: new Date() })
-    .where(and(eq(audits.id, id), eq(aauditsuserId, session.user.id)))
+    .where(and(eq(websiteAudits.id, id), eq(websiteAudits.userId, session.user.id)))
     .returning();
 
   if (!updated) return NextResponse.json({ error: 'Not found' }, { status: 404 });
@@ -40,7 +40,7 @@ export async function DELETE(_req: Request, { params }: { params: Promise<{ id: 
   const { id } = await params;
 
   await db.delete(audits)
-    .where(and(eq(audits.id, id), eq(aauditsuserId, session.user.id)));
+    .where(and(eq(websiteAudits.id, id), eq(websiteAudits.userId, session.user.id)));
 
   return NextResponse.json({ success: true });
 }
