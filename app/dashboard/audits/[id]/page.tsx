@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-interface Audits/[id]Item {
+interface AuditsDetailItem
   id: string;
   title?: string;
   status?: string;
@@ -10,8 +10,8 @@ interface Audits/[id]Item {
   [key: string]: any;
 }
 
-export default function Audits/[id]Page() {
-  const [items, setItems] = useState<Audits/[id]Item[]>([]);
+export default function AuditsDetailPage
+  const [items, setItems] = useState<AuditsDetailItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [showCreate, setShowCreate] = useState(false);
   const [newTitle, setNewTitle] = useState('');
@@ -39,7 +39,7 @@ export default function Audits/[id]Page() {
   };
 
   const handleDelete = async (id: string) => {
-    await fetch(`/api/audits/[id]/${id}`, { method: 'DELETE' });
+    await fetch(`/ApiAuditsDetail/${id}`, { method: 'DELETE' });
     setItems(prev => prev.filter(i => i.id !== id));
   };
 
