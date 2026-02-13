@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-interface AuditsDetailItem
+interface AuditsDetailItem {
   id: string;
   title?: string;
   status?: string;
@@ -10,7 +10,7 @@ interface AuditsDetailItem
   [key: string]: any;
 }
 
-export default function AuditsDetailPage
+export default function AuditsDetailPage() {
   const [items, setItems] = useState<AuditsDetailItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [showCreate, setShowCreate] = useState(false);
